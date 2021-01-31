@@ -517,3 +517,10 @@ return
 
 CapsLock & PgDn::Send, ^{PgDn}
 CapsLock & PgUp::Send, ^{PgUp}
+Alt & x:: Send, ^x
+Alt & c:: Send, ^c
+Alt & v:: Send, ^v
+Alt & s:: Send, ^s
+Alt & z:: Send, ^z
+Alt & a:: Send, ^a
+Alt & t:: Send, ^t
