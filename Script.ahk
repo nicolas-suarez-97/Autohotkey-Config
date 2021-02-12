@@ -264,11 +264,16 @@ return                                                               ;|
 ;                     CapsLock + ,  |  Enter                         ;|
 ;                     CapsLock + .  |  Delete              ;|
 ;-----------------------------------o---------------------------------o
-CapsLock & ,:: Send, {;}                                            ;|
-CapsLock & .:: Send, {:}                                           ;|
+CapsLock & ,:: Send, {Del}                                           ;|
+CapsLock & .:: Send, ^{Del}                                          ;|
 CapsLock & m:: Send, {BS}                                            ;|
-CapsLock & n:: Send, ^{BS}                                           ;|
-CapsLock & Space:: Send, {Enter}                                     ;|
+CapsLock & n:: 
+if GetKeyState("alt") = 0                                           ;|
+    Send, ^{BS}                                                     ;|
+else                                                                ;|
+    Send, +{Home}{BS}                                          ;|
+return                                                              ;|
+CapsLock & Space:: Send, {Enter}                                    ;|
 CapsLock & ñ:: Send, =     
 CapsLock & <:: Send, >                                           ;|
 CapsLock & -:: Send, _                                           ;|
@@ -365,7 +370,7 @@ CapsLock & g:: Send, {AppsKey}                                       ;|
 ;                     CapsLock + t  |  Open Text Editor              ;|
 ;-----------------------------------o---------------------------------o
 CapsLock & d:: Send, !d                                              ;|
-CapsLock & f:: Send, !f                                              ;|
+;CapsLock & f:: Send, !f                                              ;|
 ; CapsLock & e:: Run C:\Program Files\Firefox Developer Edition\firefox.exe ;|
 ; CapsLock & r:: Run C:\Program Files\Git\git-bash.exe                                        ;|
 CapsLock & t:: Send, /
@@ -410,9 +415,9 @@ Send, ^e                                                             ;|
 Send, u                                                              ;|
 return                                                               ;|
 ;-----------------------------------o                                ;|
-CapsLock & 1:: Run C:\Program Files\Firefox Developer Edition\firefox.exe ;|
-CapsLock & 2:: Run C:\Users\lenovo\AppData\Local\Programs\Microsoft VS Code\Code.exe    ;|
-CapsLock & 3:: Run C:\Users\lenovo\AppData\Local\Programs\youtube-music-desktop-app\YouTube Music Desktop App.exe ;|
+CapsLock & 1:: Run C:\Program Files\Google\Chrome\Application\chrome.exe ;|
+CapsLock & 2:: Run C:\Users\nicol\AppData\Local\Programs\Microsoft VS Code\Code.exe    ;|
+;CapsLock & 3:: Run C:\Users\lenovo\AppData\Local\Programs\youtube-music-desktop-app\YouTube Music Desktop App.exe ;|
 CapsLock & 4:: Send,!{F4}                                            ;|
 CapsLock & 5:: Send,+{F5}                                            ;|
 ;-----------------------------------o                                ;|
@@ -437,81 +442,89 @@ return                                                               ;|
 
 #IfWinActive                                                         ;|
 ;---------------------------------------------------------------------o
-Control & Space::
-If (GetKeyState("Shift")=0){
-    Send, ^{Space}
+Shift & Space::
+If (GetKeyState("Alt")=0){
+    Send, +{Space}
 }else{
     Send, 0
 }
 return
-Control & m::
-If (GetKeyState("Shift")=0){
-    Send, ^m
+Shift & m::
+If (GetKeyState("Alt")=0){
+    Send, +m
 }else{
     Send, 1
 }
 return
-Control & ,::
-If (GetKeyState("Shift")=0){
-    Send, ^,
+Shift & ,::
+If (GetKeyState("Alt")=0){
+    Send, +,
 }else{
     Send, 2
 }
 return
-Control & .::
-If (GetKeyState("Shift")=0){
-    Send, ^.
+Shift & .::
+If (GetKeyState("Alt")=0){
+    Send, +.
 }else{
     Send, 3
 }
 return
-Control & j::
-If (GetKeyState("Shift")=0){
-    Send, ^j
+Shift & j::
+If (GetKeyState("Alt")=0){
+    Send, +j
 }else{
     Send, 4
 }
 return
-Control & k::
-If (GetKeyState("Shift")=0){
-    Send, ^k
+Shift & k::
+If (GetKeyState("Alt")=0){
+    Send, +k
 }else{
     Send, 5
 }
 return
-Control & l::
-If (GetKeyState("Shift")=0){
-    Send, ^l
+Shift & l::
+If (GetKeyState("Alt")=0){
+    Send, +l
 }else{
     Send, 6
 }
 return
-Control & u::
-If (GetKeyState("Shift")=0){
-    Send, ^u
+Shift & u::
+If (GetKeyState("Alt")=0){
+    Send, +u
 }else{
     Send, 7
 }
 return
-Control & i::
-If (GetKeyState("Shift")=0){
-    Send, ^i
+Shift & i::
+If (GetKeyState("Alt")=0){
+    Send, +i
 }else{
     Send, 8
 }
 return
-Control & o::
-If (GetKeyState("Shift")=0){
-    Send, ^o
+Shift & o::
+If (GetKeyState("Alt")=0){
+    Send, +o
 }else{
     Send, 9
 }
 return
-Control & ñ::
-If (GetKeyState("Shift")=0){
-    Send, ^ñ
+Shift & ñ::
+If (GetKeyState("Alt")=0){
+    Send, +ñ
 }else{
-    Send, ^{}}
+    Send, ^{}} 
+}
+return
+
+Shift & z::
+If (GetKeyState("Alt")=0){
+    Send, +z
+}else{
+    Send, ^y
 }
 return
 
@@ -520,7 +533,11 @@ CapsLock & PgUp::Send, ^{PgUp}
 Alt & x:: Send, ^x
 Alt & c:: Send, ^c
 Alt & v:: Send, ^v
-Alt & s:: Send, ^s
 Alt & z:: Send, ^z
 Alt & a:: Send, ^a
 Alt & t:: Send, ^t
+Alt & f:: Send, ^f
+Alt & s:: Send, ^s
+Alt & d:: Send, ^d
+Alt & ñ:: Send, ^ñ
+Alt & b:: Send, ^b
