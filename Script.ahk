@@ -1,4 +1,4 @@
-﻿;=====================================================================o
+;=====================================================================o
 ;                   Feng Ruohang's AHK Script                         | 
 ;                      CapsLock Enhancement                           |
 ;---------------------------------------------------------------------o
@@ -315,11 +315,11 @@ CapsLock & b:: Send, ^{Left}                                         ;|
 ;                    CapsLock + F6  |  Media_Stop                    ;|
 ;-----------------------------------o---------------------------------o
 ;CapsLock & F1:: Send, {Volume_Mute}                                  ;|
-;CapsLock & F2:: Send, {Volume_Down}                                  ;|
-;CapsLock & F3:: Send, {Volume_Up}                                    ;|
-;CapsLock & F4:: Send, {Media_Play_Pause}                             ;|
-;CapsLock & F5:: Send, {Media_Next}                                   ;|
-;CapsLock & F6:: Send, {Media_Stop}                                   ;|
+CapsLock & ¿:: Send, {Volume_Down}                                    ;|
+CapsLock & *:: Send, {Volume_Up}                                      ;|
+;CapsLock & ¨:: Send, {Media_Play_Pause}                             ;|
+CapsLock & ¨:: Send, {Media_Next}                                   ;|
+;CapsLock & :: Send, {Media_Stop}                                   ;|
 ;---------------------------------------------------------------------o
 
 
@@ -369,10 +369,10 @@ CapsLock & g:: Send, {AppsKey}                                       ;|
 
 ;                     CapsLock + t  |  Open Text Editor              ;|
 ;-----------------------------------o---------------------------------o
-CapsLock & d:: Send, !d                                              ;|
-;CapsLock & f:: Send, !f                                              ;|
+CapsLock & d:: Send, <                                              ;|
+CapsLock & f:: Send, >                                              ;|
 ; CapsLock & e:: Run C:\Program Files\Firefox Developer Edition\firefox.exe ;|
-; CapsLock & r:: Run C:\Program Files\Git\git-bash.exe                                        ;|
+CapsLock & r:: Send, @                                        ;|
 CapsLock & t:: Send, /
 CapsLock & y::
 Send,{(}{)}
@@ -523,8 +523,6 @@ return
 Shift & z::
 If (GetKeyState("Alt")=0){
     Send, +z
-}else{
-    Send, ^y
 }
 return
 
@@ -541,3 +539,26 @@ Alt & s:: Send, ^s
 Alt & d:: Send, ^d
 Alt & ñ:: Send, ^ñ
 Alt & b:: Send, ^b
+LWin & c:: Send, ^c 
+LWin & v:: Send, ^v
+LWin & x:: Send, ^x
+LWin & s:: Send, ^s
+LWin & f:: Send, ^f
+LWin & t:: Send, ^t
+LWin & z:: Send, ^z
+LWin & a:: Send, ^a
+
+Control & z::                                                       ;|
+if GetKeyState("shift") != 0                                        ;|
+{                                                                    ;|
+    Send, +^z                                                ;|
+    return
+}else{
+    Send, ^z
+    return
+}                                                                    ;|
+return 
+
+#IfWinActive ahk_exe Illustrator.exe
+LWin:: Send, Alt                                                  ;|
+return 
